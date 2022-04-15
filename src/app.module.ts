@@ -20,7 +20,6 @@ import { getMongoConfig } from './configs/mongo.config';
     AuthModule,
     TopPageModule,
     ProductModule,
-    ReviewModule,
   ],
   controllers: [AppController],
   providers: [AppService],
