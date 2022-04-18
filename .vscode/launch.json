@@ -5,9 +5,9 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "pwa-node",
+      "type": "node",
       "request": "launch",
-      "name": "Launch Program",
+      "name": "NestJS",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/src/auth/auth.controller.ts",
       "preLaunchTask": "tsc: build - tsconfig.json",
