@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ModelType } from '@typegoose/typegoose/lib/types';
-import { genSaltSync, hashSync } from 'bcryptjs';
+import { genSalt, hash } from 'bcryptjs';
 import { InjectModel } from 'nestjs-typegoose';
 import { AuthDto } from './dto/auth.dto';
 import { UserModel } from './user.model';
@@ -12,11 +12,11 @@ export class AuthService {
   ) {}
 
   async createUser(dto: AuthDto) {
-    const salt = genSaltSync(10);
+    const salt = await genSalt(10);
 
     const newUser = new this.userModel({
       email: dto.login,
-      passwordHash: hashSync(dto.password, salt),
+      passwordHash: await hash(dto.password, salt),
     });
 
     return newUser.save();
