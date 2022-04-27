@@ -9,6 +9,11 @@ import { REVIEW_NOT_FOUND } from '../src/review/review.constants';
 
 const productId = new Types.ObjectId().toHexString();
 
+const loginDto = {
+  login: '1@mail.ru',
+  password: '123',
+};
+
 const testDto: CreateReviewDto = {
   name: 'test',
   title: 'title',
@@ -19,6 +24,7 @@ const testDto: CreateReviewDto = {
 describe('Review (e2e)', () => {
   let app: INestApplication;
   let createdId: string;
+  let token: string;
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -27,6 +33,11 @@ describe('Review (e2e)', () => {
 
     app = moduleFixture.createNestApplication();
     await app.init();
+
+    const { body } = await request(app.getHttpServer())
+      .post('/auth/login')
+      .send(loginDto);
+    token = body.access_token;
   });
 
   it('/review/create (POST) - success', (done) => {
@@ -69,12 +80,14 @@ describe('Review (e2e)', () => {
   it('/review/:id (DELETE) - success', async () => {
     return request(app.getHttpServer())
       .delete('/review/' + createdId)
+      .set('Authorization', 'Bearer ' + token)
       .expect(200);
   });
 
   it('/review/:id (DELETE) - fail', async () => {
     return request(app.getHttpServer())
       .delete('/review/' + new Types.ObjectId().toHexString())
+      .set('Authorization', 'Bearer ' + token)
       .expect(404, {
         statusCode: 404,
         message: REVIEW_NOT_FOUND,
