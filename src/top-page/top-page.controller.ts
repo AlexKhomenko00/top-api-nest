@@ -85,4 +85,10 @@ export class TopPageController {
     }
     return existingPage;
   }
+
+  @HttpCode(200)
+  @Post('textSearch/:text')
+  async textSearch(@Param('text') text: string) {
+    return this.topPageService.findByText(text);
+  }
 }
