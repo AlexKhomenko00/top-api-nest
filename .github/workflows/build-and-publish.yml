@@ -28,7 +28,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           # relative path to the place where source code with Dockerfile is located
-          context: Dockerfile
+          context: ./Dockerfile
           # Note: tags has to be all lower-case
           tags: top-api:latest
           # build on feature branches, push only on main branch
