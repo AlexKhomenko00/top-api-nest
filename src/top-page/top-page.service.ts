@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ModelType } from '@typegoose/typegoose/lib/types';
 import { InjectModel } from 'nestjs-typegoose';
-import { FindTopPageDto } from './dto/find-top-page-dto';
 import { TopPageDto } from './dto/top-page.dto';
 import { TopLevelCategory, TopPageModel } from './top-page.model';
 

@@ -14,7 +14,6 @@ import {
 import { IdValidationPipe } from 'pipes/id-validation.pipe';
 import { TelegramService } from 'src/telegram/telegram.service';
 import { JwtAuthGuard } from '../auth/guards/jwt.guard';
-import { UserEmail } from '../decorators/user-email.decorator';
 import { CreateReviewDto } from './dto/create-review.dto';
 import { REVIEW_NOT_FOUND } from './review.constants';
 import { ReviewService } from './review.service';
@@ -45,10 +44,7 @@ export class ReviewController {
   }
 
   @Get('byProduct/:productId')
-  async getByProduct(
-    @Param('productId', IdValidationPipe) productId: string,
-    @UserEmail() email: string,
-  ) {
+  async getByProduct(@Param('productId', IdValidationPipe) productId: string) {
     return this.reviewService.findByProductId(productId);
   }
 
