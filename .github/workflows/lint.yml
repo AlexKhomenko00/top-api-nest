@@ -26,7 +26,6 @@ jobs:
       - name: Run linters
         uses: wearerequired/lint-action@v2
         with:
-          auto_fix: true
           eslint: true
           prettier: true
           github_token: ${{ secrets.GHCR_PAT }}
