@@ -23,11 +23,17 @@ jobs:
       - name: Install Node.js dependencies
         run: npm ci --force
 
-      - name: Run linters
-        uses: wearerequired/lint-action@v2
-        with:
-          eslint: true
-          prettier: true
-          eslint_extensions: "ts"
-          github_token: ${{ secrets.GHCR_PAT }}
-          git_email: "oleksandr.khomenko2000@gmail.com"
+      - name: Run ESLint
+        run: npm run linters
+
+      - name: Run Prettier
+        run: npm prettier
+
+      # - name: Run linters
+      #   uses: wearerequired/lint-action@v2
+      #   with:
+      #     eslint: true
+      #     prettier: true
+      #     eslint_extensions: "ts"
+      #     github_token: ${{ secrets.GHCR_PAT }}
+      #     git_email: "oleksandr.khomenko2000@gmail.com"
