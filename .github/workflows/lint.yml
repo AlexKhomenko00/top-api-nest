@@ -27,7 +27,7 @@ jobs:
         run: npm run lint
 
       - name: Run Prettier
-        run: npm prettier
+        run: npm run prettier
 
       # - name: Run linters
       #   uses: wearerequired/lint-action@v2
