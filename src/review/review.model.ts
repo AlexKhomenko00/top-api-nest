@@ -2,7 +2,7 @@ import { Types } from 'mongoose';
 import { prop } from '@typegoose/typegoose';
 import { Base, TimeStamps } from '@typegoose/typegoose/lib/defaultClasses';
 
-export interface ReviewModel extends Base {}
+export type ReviewModel = Base;
 export class ReviewModel extends TimeStamps {
   @prop()
   name: string;

@@ -1,0 +1,1 @@
+export const TELEGRAM_MODULE_OPTIONS = Symbol.for('TELEGRAM_MODULE_OPTIONS');
